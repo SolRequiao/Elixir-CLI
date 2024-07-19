@@ -4,22 +4,16 @@ defmodule ContinuarInserindo do
   """
 
   @doc """
-  Função que solicita ao usuário se deseja continuar inserindo nomes.
-  Retorna true se o usuário digitar 1 (continuar) e false se digitar 0 (parar).
+  Função que coleta nomes do usuário até que ele insira uma linha vazia.
   """
-  def perguntar do
-    IO.puts("Deseja inserir outro nome?")
-    input = IO.gets("Digite '1' para continuar ou '0' para parar: ") |> String.trim()
+  def coletar_nomes(nomes) do
+    IO.puts("Digite um nome (pressione Enter em uma linha vazia para terminar):")
+    nome = IO.gets("") |> String.trim()
 
-    case Integer.parse(input) do
-      {1, _} -> true
-      {0, _} -> false
-      :error ->
-        IO.puts("Opção inválida!")
-        perguntar()
-      _ ->
-        IO.puts("Opção inválida!")
-        perguntar()
+    if nome == "" do
+      nomes
+    else
+      coletar_nomes([nome | nomes])
     end
   end
 end

@@ -4,23 +4,12 @@ defmodule ColetarNomes do
   """
 
   @doc """
-  Função que coleta nomes do usuário em um loop até que o usuário decida parar.
+  Função que coleta nomes do usuário até que ele insira uma linha vazia.
   """
   def coletar(nomes) do
-    IO.puts("Digite um nome:")
-    nome = IO.gets("") |> String.trim()
-
-    # Adiciona o nome à lista
-    nomes_atualizados = [nome | nomes]
-
-    continuar = ContinuarInserindo.perguntar()
-
-    if continuar do
-      coletar(nomes_atualizados)
-    else
-      IO.puts("Nomes inseridos:")
-      nomes_com_romanos = NumerosRomanos.gerar_numeros_romanos(Enum.reverse(nomes_atualizados))
-      Enum.each(nomes_com_romanos, &IO.puts(&1))
-    end
+    nomes_inseridos = ContinuarInserindo.coletar_nomes(nomes)
+    IO.puts("Nomes inseridos:")
+    nomes_com_romanos = NumerosRomanos.gerar_numeros_romanos(Enum.reverse(nomes_inseridos))
+    Enum.each(nomes_com_romanos, &IO.puts(&1))
   end
 end
