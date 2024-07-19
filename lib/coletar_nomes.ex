@@ -6,10 +6,10 @@ defmodule ColetarNomes do
   @doc """
   Função que coleta nomes do usuário até que ele insira uma linha vazia.
   """
-  def coletar(nomes) do
-    nomes_inseridos = ContinuarInserindo.coletar_nomes(nomes)
+  def coletar_nomes(nomes) do
+    nomes_inseridos = ContinuarInserindo.continuar_inserindo(nomes)
     IO.puts("Nomes inseridos:")
-    nomes_com_romanos = NumerosRomanos.gerar_numeros_romanos(Enum.reverse(nomes_inseridos))
-    Enum.each(nomes_com_romanos, &IO.puts(&1))
+    nomes_com_numeros_romanos = NumerosRomanos.gerar_numeros_romanos(Enum.reverse(nomes_inseridos))
+    Enum.each(nomes_com_numeros_romanos, &IO.puts(&1))
   end
 end
