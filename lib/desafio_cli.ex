@@ -4,14 +4,9 @@ defmodule DesafioCli do
   """
 
   @doc """
-  A função main recebe os argumentos passados na linha de
-  comando como lista de strings e executa a CLI.
+  A função main é o ponto de entrada da CLI. Ela inicia a coleta de nomes.
   """
   def main(_args) do
-    IO.puts(phrase())
-  end
-
-  def phrase() do
-    "Hello, world!"
+    ColetarNomes.coletar([])
   end
 end

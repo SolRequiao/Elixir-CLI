@@ -19,7 +19,7 @@ defmodule ColetarNomes do
       coletar(nomes_atualizados)
     else
       IO.puts("Nomes inseridos:")
-      nomes_com_romanos = RomanNumerals.generate_names_with_romans(Enum.reverse(nomes_atualizados))
+      nomes_com_romanos = NumerosRomanos.gerar_numeros_romanos(Enum.reverse(nomes_atualizados))
       Enum.each(nomes_com_romanos, &IO.puts(&1))
     end
   end

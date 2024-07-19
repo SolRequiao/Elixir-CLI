@@ -5,17 +5,21 @@ defmodule ContinuarInserindo do
 
   @doc """
   Função que solicita ao usuário se deseja continuar inserindo nomes.
-  Retorna true se o usuário digitar '1' (continuar) e false se digitar '0' (parar).
+  Retorna true se o usuário digitar 1 (continuar) e false se digitar 0 (parar).
   """
   def perguntar do
     IO.puts("Deseja inserir outro nome?")
-    IO.puts("Digite '1' para continuar ou '0' para parar:")
-    input = IO.gets("") |> String.trim()
+    input = IO.gets("Digite '1' para continuar ou '0' para parar: ") |> String.trim()
 
-    case input do
-      "1" -> true
-      "0" -> false
-      _ -> perguntar()
+    case Integer.parse(input) do
+      {1, _} -> true
+      {0, _} -> false
+      :error ->
+        IO.puts("Opção inválida!")
+        perguntar()
+      _ ->
+        IO.puts("Opção inválida!")
+        perguntar()
     end
   end
 end
